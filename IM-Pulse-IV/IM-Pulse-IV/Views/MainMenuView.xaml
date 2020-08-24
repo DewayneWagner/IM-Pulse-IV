@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VM="clr-namespace:IM_Pulse_IV.ViewModels"
+             x:Class="IM_Pulse_IV.Views.MainMenuView">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Int32 x:Key="Col_LeftSpacer">0</x:Int32>
+            <x:Int32 x:Key="Col_Parameter">1</x:Int32>
+            <x:Int32 x:Key="Col_Value">2</x:Int32>
+            <x:Int32 x:Key="Col_Description">3</x:Int32>
+            <x:Int32 x:Key="Col_Min">4</x:Int32>
+            <x:Int32 x:Key="Col_Max">5</x:Int32>
+            <x:Int32 x:Key="Col_Spacer">6</x:Int32>
+            <x:Int32 x:Key="Col_CommandParameter">7</x:Int32>
+            <x:Int32 x:Key="Col_RightSpacer">8</x:Int32>
+
+            <x:Int32 x:Key="Col_SpanHeading">7</x:Int32>
+            <x:Int32 x:Key="Col_SpanSubheading">5</x:Int32>
+            <x:Double x:Key="SpacerWidth">15</x:Double>
+
+            <x:Int32 x:Key="Row_SubHeading">0</x:Int32>
+            <x:Int32 x:Key="Row_GridHeading">1</x:Int32>
+            <x:Int32 x:Key="Row_Data1">2</x:Int32>
+            <x:Int32 x:Key="Row_Data2">3</x:Int32>
+            <x:Int32 x:Key="Row_Data3">4</x:Int32>
+            <x:Int32 x:Key="Row_Data4">5</x:Int32>
+            <x:Int32 x:Key="Row_Data5">6</x:Int32>
+            <x:Int32 x:Key="Row_Data6">7</x:Int32>
+            <x:Int32 x:Key="Row_Data7">8</x:Int32>
+            <x:Int32 x:Key="Row_Controls">9</x:Int32>
+            
+            <x:Int32 x:Key="Row_SpanLV">7</x:Int32>
+            <x:Int32 x:Key="Row_SpanSpacer">8</x:Int32>
+
+            <x:Double x:Key="StandardWidth">750</x:Double>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource Background}">
+            <Label Style="{StaticResource HeaderLabel}"/>
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            
+                <Grid Style="{StaticResource StandardGrid}">
+                    <Grid.BindingContext>
+                        <VM:MainMenuViewModel/>
+                    </Grid.BindingContext>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource SpacerWidth}"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{StaticResource SpacerWidth}"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="{StaticResource SpacerWidth}"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--SubHeading-->
+
+                <Label Style="{StaticResource SubHeadingLabel}" 
+                    Text="Set Parameters for Simulation" 
+                    Grid.Row="{StaticResource Row_SubHeading}"
+                    Grid.Column="{StaticResource Col_Parameter}"
+                    Grid.ColumnSpan="{StaticResource Col_SpanSubheading}"/>
+
+                <Label Style="{StaticResource SubHeadingLabel}"
+                    Text="Command Strings"
+                    Grid.Row="{StaticResource Row_SubHeading}"
+                    Grid.Column="{StaticResource Col_CommandParameter}"/>
+
+                <!--Grid header-->
+
+                <Label Style="{StaticResource GridHeaderLabel}"
+                       Text="Parameter"
+                       Grid.Row="{StaticResource Row_GridHeading}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Label Style="{StaticResource GridHeaderLabel}"
+                       Text="Value"
+                       Grid.Row="{StaticResource Row_GridHeading}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource GridHeaderLabel}"
+                       Text="Description"
+                       Grid.Row="{StaticResource Row_GridHeading}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource GridHeaderLabel}"
+                       Text="Min"
+                       Grid.Row="{StaticResource Row_GridHeading}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource GridHeaderLabel}"
+                       Text="Max"
+                       Grid.Row="{StaticResource Row_GridHeading}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <Label Style="{StaticResource GridHeaderLabel}"
+                    Text="Current Command Strings"
+                    Grid.Row="{StaticResource Row_GridHeading}"
+                    Grid.Column="{StaticResource Col_CommandParameter}"/>
+
+                <!--Segment length-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Segment Length"
+                       Grid.Row="{StaticResource Row_Data1}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Entry Style="{StaticResource ParameterEntry}"
+                       Text="{Binding SegmentLength}"
+                       Grid.Row="{StaticResource Row_Data1}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Length of each data segment between delimiters"
+                       Grid.Row="{StaticResource Row_Data1}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MinSegmentLength}"
+                       Grid.Row="{StaticResource Row_Data1}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MaxSegmentLength}"
+                       Grid.Row="{StaticResource Row_Data1}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <!--Number of Segments-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Number of Segments"
+                       Grid.Row="{StaticResource Row_Data2}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Entry Style="{StaticResource ParameterEntry}"
+                       Text="{Binding NumberOfSegments}"
+                       Grid.Row="{StaticResource Row_Data2}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Total number of delimited data segments"
+                       Grid.Row="{StaticResource Row_Data2}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MinNumberOfSegments}"
+                       Grid.Row="{StaticResource Row_Data2}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MaxNumberOfSegments}"
+                       Grid.Row="{StaticResource Row_Data2}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <!--Delimiter-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Delimiter"
+                       Grid.Row="{StaticResource Row_Data3}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Entry Style="{StaticResource ParameterEntry}"
+                       Text="{Binding Delimiter}"
+                       Grid.Row="{StaticResource Row_Data3}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="String delimiter to utilize to separate segments"
+                       Grid.Row="{StaticResource Row_Data3}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Grid.Row="{StaticResource Row_Data3}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Grid.Row="{StaticResource Row_Data3}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <!--Minimum Number of Commands Per Segment-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Min number of commands per segment"
+                       Grid.Row="{StaticResource Row_Data4}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Entry Style="{StaticResource ParameterEntry}"
+                       Text="{Binding MinNumberOfCommandsPerSegment}"
+                       Grid.Row="{StaticResource Row_Data4}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Min number of command strings inserted into each segment"
+                       Grid.Row="{StaticResource Row_Data4}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MinCommandsPerSegment}"
+                       Grid.Row="{StaticResource Row_Data4}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MaxCommandsPerSegment}"
+                       Grid.Row="{StaticResource Row_Data4}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <!--Max number of commands per segment-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Max number of commands per segment"
+                       Grid.Row="{StaticResource Row_Data5}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Entry Style="{StaticResource ParameterEntry}"
+                       Text="{Binding MaxNumberOfCommandsPerString}"
+                       Grid.Row="{StaticResource Row_Data5}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Max number of command strings inserted into each segment"
+                       Grid.Row="{StaticResource Row_Data5}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MinCommandsPerSegment}"
+                       Grid.Row="{StaticResource Row_Data5}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MaxCommandsPerSegment}"
+                       Grid.Row="{StaticResource Row_Data5}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <!--Pulse-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Pulse"
+                       Grid.Row="{StaticResource Row_Data6}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Switch Style="{StaticResource StandardSwitch}"
+                        Grid.Row="{StaticResource Row_Data6}"
+                        Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="EMWD"
+                       Grid.Row="{StaticResource Row_Data6}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Grid.Row="{StaticResource Row_Data6}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Grid.Row="{StaticResource Row_Data6}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <!--Random Text Generation Frequency-->
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Random Text Generation Frequency"
+                       Grid.Row="{StaticResource Row_Data7}"
+                       Grid.Column="{StaticResource Col_Parameter}"/>
+
+                <Entry Style="{StaticResource ParameterEntry}"
+                       Text="{Binding RandomTextGenerationFrequency}"
+                       Grid.Row="{StaticResource Row_Data7}"
+                       Grid.Column="{StaticResource Col_Value}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="Time duration between running new random test data"
+                       Grid.Row="{StaticResource Row_Data7}"
+                       Grid.Column="{StaticResource Col_Description}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MinTextGenerationFrequency}"
+                       Grid.Row="{StaticResource Row_Data7}"
+                       Grid.Column="{StaticResource Col_Min}"/>
+
+                <Label Style="{StaticResource ParameterLabels}"
+                       Text="{Binding MaxTextGenerationFrequency}"
+                       Grid.Row="{StaticResource Row_Data7}"
+                       Grid.Column="{StaticResource Col_Max}"/>
+
+                <BoxView BackgroundColor="{StaticResource LightBackground}" 
+                         Grid.Row="{StaticResource Row_Data1}"
+                         Grid.Column="{StaticResource Col_CommandParameter}"
+                         Grid.RowSpan="{StaticResource Row_SpanLV}"/>
+
+                <BoxView Style="{StaticResource SpacerBV}"
+                         Grid.Row="{StaticResource Row_GridHeading}"
+                         Grid.Column="{StaticResource Col_LeftSpacer}" 
+                         Grid.RowSpan="{StaticResource Row_SpanSpacer}"/>
+
+                <BoxView Style="{StaticResource SpacerBV}"
+                         Grid.Row="{StaticResource Row_GridHeading}"
+                         Grid.Column="{StaticResource Col_Spacer}" 
+                         Grid.RowSpan="{StaticResource Row_SpanSpacer}"/>
+
+                <BoxView Style="{StaticResource SpacerBV}"
+                         Grid.Row="{StaticResource Row_GridHeading}"
+                         Grid.Column="{StaticResource Col_RightSpacer}" 
+                         Grid.RowSpan="{StaticResource Row_SpanSpacer}"/>
+
+                <StackLayout Grid.Row="{StaticResource Row_Data1}"
+                       Grid.Column="{StaticResource Col_CommandParameter}"
+                       Orientation="Vertical"
+                       Grid.RowSpan="{StaticResource Row_SpanLV}"
+                       Style="{StaticResource StandardStackLayout}">
+
+                    <ListView ItemsSource="{Binding CommandParameterList}" 
+                          ItemSelected="OnClicked"
+                          Style="{StaticResource StandardLV}">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Style="{StaticResource ParameterLabels}" Text="{Binding CommandName}" FontSize="Medium"/>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackLayout>
+
+                <Label Style="{StaticResource GridHeaderLabel}" 
+                       BackgroundColor="{StaticResource Orange}"
+                       FontSize="Small"
+                       Text="{Binding ValidateMessage}"
+                       Grid.Row="{StaticResource Row_Controls}"
+                       Grid.Column="{StaticResource Col_Parameter}"
+                       Margin="{StaticResource SpacerWidth}"
+                       Grid.ColumnSpan="2"/>
+
+                <Button Style="{StaticResource MainButton}"
+                        Text="Run Simulation"
+                        Command="{Binding StartSimulation}"
+                        Grid.Row="{StaticResource Row_Controls}"
+                        Grid.Column="{StaticResource Col_Description}"
+                        Grid.ColumnSpan="3"/>
+
+                <Entry Style="{StaticResource ParameterEntry}" 
+                       IsVisible="{Binding NewCommandEntryVisibilityAndEnabled}" 
+                       IsEnabled="{Binding NewCommandEntryVisibilityAndEnabled}"
+                       Grid.Row="{StaticResource Row_Data7}"                   
+                       Grid.Column="{StaticResource Col_CommandParameter}"
+                       Text="{Binding NewCommandString}"
+                       Placeholder="Enter Command String"/>
+
+                <Button Style="{StaticResource MainButton}" 
+                        Command="{Binding AddNewCommandString}" 
+                        Grid.Row="{StaticResource Row_Controls}"
+                        Grid.Column="{StaticResource Col_CommandParameter}"
+                        Text="Add New Command"/>
+            </Grid>
+            
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            <Label Style="{StaticResource FooterLabel}"/>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VM="clr-namespace:IM_Pulse_IV.ViewModels"
+             x:Class="IM_Pulse_IV.Views.DisplayDataView">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="ButtonHeight">150</x:Double>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+        <StackLayout Style="{StaticResource StandardStackLayout}" BackgroundColor="{StaticResource Primary}" Opacity="1">
+            <Label Style="{StaticResource HeaderLabel}"/>
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            
+            <StackLayout Style="{StaticResource StandardStackLayout}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750">
+
+                <StackLayout.BindingContext>
+                    <VM:DisplayDataViewModel/>
+                </StackLayout.BindingContext>
+
+                <Button Style="{StaticResource MainButton}" 
+                        Command="{Binding ReadAndProcessData}" 
+                        HeightRequest="{StaticResource ButtonHeight}"                        
+                        FontSize="Large" 
+                        Text="Read and Process Data"/>
+                
+                <Button Style="{StaticResource MainButton}" 
+                        Command="{Binding VerifyReadData}" 
+                        IsEnabled="{Binding ButtonEnabled}"
+                        HeightRequest="{StaticResource ButtonHeight}"
+                        FontSize="Large" 
+                        Text="Verify if Read Data Matches Generated Data"/>
+
+                <Button Style="{StaticResource MainButton}" 
+                        Command="{Binding MultiParameters}" 
+                        HeightRequest="{StaticResource ButtonHeight}"
+                        IsEnabled="{Binding ButtonEnabled}"
+                        FontSize="Large" 
+                        Text="See Results for Multiple Parameters"/>
+                
+            </StackLayout>
+
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            <Label Style="{StaticResource FooterLabel}"/>
+        </StackLayout>
+        
+    </ContentPage.Content>    
+</ContentPage>

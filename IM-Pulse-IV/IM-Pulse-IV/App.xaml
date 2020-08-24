@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IM_Pulse_IV.App">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#082e45</Color>
+            <Color x:Key="Secondary">#666</Color>
+            <Color x:Key="Orange">#e86d2f</Color>
+            <Color x:Key="LightBackground">#FFFFFF</Color>
+            <Font x:Key="StandardFont">Helvetica</Font>
+            <x:Double x:Key="StandardOpacity">0.8</x:Double>
+                        
+            <Style TargetType="Button" x:Key="MainButton">
+                <Setter Property="TextColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Orange}"/>
+                <Setter Property="Font" Value="{StaticResource StandardFont}"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="HeadingLabel">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="TextColor" Value="{StaticResource Orange}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="SubHeadingLabel">
+                <Setter Property="TextColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HeightRequest" Value="75"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="GridHeaderLabel">
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
+                <Setter Property="TextColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HeightRequest" Value="75"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="ParameterLabels">
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="Entry" x:Key="ParameterEntry">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Keyboard" Value="Numeric"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+            
+            <Style TargetType="Grid" x:Key="StandardGrid">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="ColumnSpacing" Value="1"/>
+                <Setter Property="RowSpacing" Value="1"/>                
+            </Style>
+
+            <Style TargetType="StackLayout" x:Key="StandardStackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="StackLayout" x:Key="Background">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="HeaderLabel">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0,0,10,0"/>
+                <Setter Property="Text" Value="IM-Pulse-IV"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="End"/>
+                <Setter Property="VerticalTextAlignment" Value="Start"/>
+                <Setter Property="TextColor" Value="{StaticResource Orange}"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="FooterLabel">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="10,0,10,0"/>
+                <Setter Property="Text" Value="IM-Pulse-IV TM - 2020"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="{StaticResource Orange}"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+
+            <Style TargetType="BoxView" x:Key="OrangeLine">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Orange}"/>
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <Style TargetType="Switch" x:Key="StandardSwitch">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+            </Style>
+
+            <Style TargetType="BoxView" x:Key="SpacerBV">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+
+            <Style TargetType="ListView" x:Key="StandardLV">
+                <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+                <Setter Property="IsPullToRefreshEnabled" Value="True"/>
+                <Setter Property="SeparatorColor" Value="{StaticResource Secondary}"/>
+                <Setter Property="SeparatorVisibility" Value="Default"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

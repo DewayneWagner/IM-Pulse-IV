@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IM_Pulse_IV.Views.ViewTemplate">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource Background}">
+            <Label Style="{StaticResource HeaderLabel}"/>
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            <StackLayout Style="{StaticResource StandardStackLayout}">
+                
+                
+                
+                
+            </StackLayout>
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            <Label Style="{StaticResource FooterLabel}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
