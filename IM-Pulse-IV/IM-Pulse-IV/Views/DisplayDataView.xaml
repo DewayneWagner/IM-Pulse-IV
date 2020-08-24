@@ -26,6 +26,7 @@
                         Command="{Binding ReadAndProcessData}" 
                         HeightRequest="{StaticResource ButtonHeight}"                        
                         FontSize="Large" 
+                        IsEnabled="{Binding InverseButtonEnabled}"
                         Text="Read and Process Data"/>
                 
                 <Button Style="{StaticResource MainButton}" 

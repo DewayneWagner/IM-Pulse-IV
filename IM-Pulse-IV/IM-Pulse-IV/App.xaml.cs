@@ -24,8 +24,8 @@ namespace IM_Pulse_IV
             InitializeComponent();
             InitPropertyDictionary();
 
-            MainPage = new NavigationPage(new MainMenuView());
-            //MainPage = new NavigationPage(new DisplayDataView());
+            //MainPage = new NavigationPage(new MainMenuView());
+            MainPage = new NavigationPage(new MainPage());
         }
 
         private void InitPropertyDictionary()

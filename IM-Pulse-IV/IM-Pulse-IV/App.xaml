@@ -22,6 +22,7 @@
                 <Setter Property="Font" Value="{StaticResource StandardFont}"/>
                 <Setter Property="Margin" Value="15"/>
                 <Setter Property="Opacity" Value="{StaticResource StandardOpacity}"/>
+                <Setter Property="FontSize" Value="Large"/>
             </Style>
 
             <Style TargetType="Label" x:Key="HeadingLabel">

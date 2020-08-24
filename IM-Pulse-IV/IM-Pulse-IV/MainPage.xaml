@@ -2,6 +2,7 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:graphics="clr-namespace:IM_Pulse_IV.Services"
+             xmlns:VM="clr-namespace:IM_Pulse_IV.ViewModels"
              x:Class="IM_Pulse_IV.MainPage">
 
     <ContentPage.Resources>
@@ -9,50 +10,64 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid>
-            <Image Source="{graphics:EmbeddedImage IM-Pulse-IV.Graphics.DrillingRig.png}" Aspect="Fill" Opacity="0.7"/>
+        
+        <StackLayout Style="{StaticResource Background}">
+            <Image Source="{graphics:EmbeddedImage IM-Pulse-IV.Graphics.DrillingRig.png}" Aspect="Fill"/>
+            <Label Style="{StaticResource HeaderLabel}"/>
+            <BoxView Style="{StaticResource OrangeLine}"/>
 
-            <Grid Style="{StaticResource StandardGrid}">
+            <Grid Style="{StaticResource StandardGrid}" HorizontalOptions="Center" WidthRequest="1500">
+
+                <Grid.BindingContext>
+                    <VM:MainPageViewModel/>
+                </Grid.BindingContext>
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Style="{StaticResource MainButton}" Text="Test Button" Grid.Row="1" Grid.Column="1"/>
-                <Label Style="{StaticResource HeadingLabel}" Text="Test Label" Grid.Row="3" Grid.Column="1"/>
+                <Label Style="{StaticResource SubHeadingLabel}" 
+                       Text="Welcome to IM-Pulse-IV!" 
+                       Grid.Row="0" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="2"/>
+                
+                <Label Style="{StaticResource GridHeaderLabel}" 
+                       Text="{Binding IntroMessage}" 
+                       Grid.Row="1" 
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Start" 
+                       Padding="15" 
+                       FontAttributes="None"/>
+                
+                <Button Style="{StaticResource MainButton}" 
+                        Command="{Binding SetParameters}"                         
+                        Text="Set Parameters for Simulation" 
+                        Grid.Row="2"
+                        Grid.Column="1"/>
+
+                <Label Style="{StaticResource GridHeaderLabel}" 
+                       Text="{Binding Instructions}" 
+                       Grid.Row="1" 
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Start"
+                       Grid.Column="1"
+                       Padding="15" 
+                       Margin="15, 0 ,0, 0"
+                       FontAttributes="None"/>
                 
             </Grid>
-        </Grid>
-        
+            
+            <BoxView Style="{StaticResource OrangeLine}"/>
+            <Label Style="{StaticResource FooterLabel}"/>
+        </StackLayout>
 
     </ContentPage.Content>
         
-    <!--<StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>-->
-
 </ContentPage>

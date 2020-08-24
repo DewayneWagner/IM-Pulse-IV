@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:VM="clr-namespace:IM_Pulse_IV.ViewModels"
+             xmlns:graphics="clr-namespace:IM_Pulse_IV.Services"
              x:Class="IM_Pulse_IV.Views.VerifyDataView">
 
     <ContentPage.Resources>
@@ -19,11 +20,12 @@
     
     <ContentPage.Content>
         <StackLayout Style="{StaticResource Background}">
-            
+
             <StackLayout.BindingContext>
                 <VM:VerifyDataViewModel/>
             </StackLayout.BindingContext>
 
+            <Image Source="{graphics:EmbeddedImage IM-Pulse-IV.Graphics.DrillingRig.png}" Aspect="Fill" Opacity="0.7"/>
             <Label Style="{StaticResource HeaderLabel}"/>
             <BoxView Style="{StaticResource OrangeLine}"/>
 

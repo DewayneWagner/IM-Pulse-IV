@@ -19,6 +19,7 @@ namespace IM_Pulse_IV.ViewModels
             VerifyReadData = new Command(OnVerifyReadData);
             MultiParameters = new Command(OnMultiParameters);
             ReadAndProcessData = new Command(OnReadAndProcessData);
+            InverseButtonEnabled = true;
         }
         
         public ICommand ReadAndProcessData { get; set; }
@@ -47,7 +48,20 @@ namespace IM_Pulse_IV.ViewModels
             set
             {
                 _buttonEnabled = value;
+                InverseButtonEnabled = false;
                 SetValue(ref _buttonEnabled, value);
+            }
+        }
+
+        private bool _inverseButtonEnabled;
+        public bool InverseButtonEnabled
+        {
+            get => _inverseButtonEnabled;
+            set
+            {
+                _inverseButtonEnabled = value;
+                SetValue(ref _inverseButtonEnabled, value);
+                
             }
         }
     }
