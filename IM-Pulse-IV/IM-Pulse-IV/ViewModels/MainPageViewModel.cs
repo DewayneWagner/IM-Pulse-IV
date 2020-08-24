@@ -61,8 +61,8 @@ namespace IM_Pulse_IV.ViewModels
                 "\n" +
                 "4. Clean & efficient string data processing" +                
                 "\n\n" +
-                "Although I don't have a lot of software development experience, I am an extremely quick learner, very hard-working, and possess " +
-                "a tremendous amount of unique skillsets.  Also - I have a deep understanding and fascination with drilling practices, procedures, and technology." +
+                "Although I don't have a lot of software development experience in a professional setting, I am an extremely quick learner, very hard-working, and possess " +
+                "an extremely diverse skillset.  Also - I have a deep understanding and fascination with drilling practices, procedures, and technology." +
                 "\n\n" +
                 "There may be things that a more experienced software developer have that I don't have - but there are many more benefits with my skillset that " +
                 "many other software developers don't have as well." +

@@ -26,14 +26,13 @@ namespace IM_Pulse_IV.Models.RandomDataGenerator
             SetListOfAllUniqueTextParametersAndCommandStrings();
             ScrubDelimitersAndCommandParameters();
             SetListOfRandomDataStats();
-            GenerateRandomTextFile();
-            //AddCommandParameters();
+            GenerateRandomTextString();
             CombineSegments();
             WriteRandomStatsToDB();
             RandomTextIO.WriteTextData(_dataToWrite, isFirstWrite);
         }
 
-        private void GenerateRandomTextFile()
+        private void GenerateRandomTextString()
         {
             if(_listOfSegments == null) { initList(); }
 
@@ -48,7 +47,7 @@ namespace IM_Pulse_IV.Models.RandomDataGenerator
 
                 for (int i = 0; i < _currentRandomDataParameters.SegmentLength; i++)
                 {
-                    if (sortedList.Any(s => s.Index == i))
+                    if (sortedList.Any(s => s.Index == i) && i != 0)
                     {
                         rds = sortedList.Where(s => s.Index == i).FirstOrDefault();
                         _listOfSegments[seg] += rds.CommandParameter;
@@ -90,7 +89,7 @@ namespace IM_Pulse_IV.Models.RandomDataGenerator
                             Index = insertIndex,
                             IsReadVsInsert = false,
                         });
-                    }                    
+                    }
                 }
             }
             _randomDataStatsList.OrderBy(r => r.Index)
@@ -101,7 +100,7 @@ namespace IM_Pulse_IV.Models.RandomDataGenerator
                 int index = 0;
                 do
                 {
-                    index = rnd.Next(0, _currentRandomDataParameters.SegmentLength);
+                    index = rnd.Next(1, _currentRandomDataParameters.SegmentLength);
                 } while (_randomDataStatsList.Any(r => r.Index == index));
                 return index;
             }

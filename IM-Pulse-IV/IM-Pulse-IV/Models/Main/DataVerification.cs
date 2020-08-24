@@ -40,7 +40,7 @@ namespace IM_Pulse_IV.Models.Main
             ObservableCollection<DataVerification> dvOC = new ObservableCollection<DataVerification>();
             _maxNumberOfSegments = allData.Max(d => d.SegmentID) + 1;
             initDefaultList();
-            addDataToList();
+            //addDataToRandomStatsList();
             checkIfAccurate();
 
             return dvOC;
@@ -71,13 +71,14 @@ namespace IM_Pulse_IV.Models.Main
                 void addReadValuesToOC()
                 {
                     var readList = allData.Where(d => d.IsReadVsInsert)
-                        .OrderBy(d => d.SegmentID)
-                        .ThenBy(d => d.CommandParameter)
-                        .ThenBy(d => d.Index)
-                        .ToList();
+                                        .OrderBy(d => d.SegmentID)
+                                        .ThenBy(d => d.CommandParameter)
+                                        .ThenBy(d => d.Index)
+                                        .ToList();
 
                     List<DataVerification> thisDVList;
                     List<RandomDataStats> thisRDSList;
+                    int adjustedIndex;
 
                     foreach (RandomDataStats data in readList)
                     {
@@ -87,24 +88,27 @@ namespace IM_Pulse_IV.Models.Main
                             {
                                 thisDVList = dvOC.Where(d => d.SegmentID == seg)
                                                 .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
+                                                .OrderBy(d => d.InsertIndex)
                                                 .ToList();
 
                                 thisRDSList = readList.Where(d => d.SegmentID == seg)
                                                 .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
+                                                .OrderBy(d => d.Index)
                                                 .ToList();
 
                                 int smallestIndex = thisDVList.Count < thisRDSList.Count ? thisDVList.Count : thisRDSList.Count;
+                                adjustedIndex = thisRDSList.Count > thisDVList.Count ? 1 : 0;
 
                                 for (int index = 0; index < smallestIndex; index++)
                                 {
-                                    thisDVList[index].ReadIndex = thisRDSList[index].Index;
+                                    thisDVList[index].ReadIndex = thisRDSList[index + adjustedIndex].Index;
                                 }
                             }
                         }
                     }
                 }
             }
-            void addDataToList()
+            void addDataToRandomStatsList()
             {
                 foreach (RandomDataStats data in allData)
                 {

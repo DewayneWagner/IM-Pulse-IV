@@ -117,6 +117,5 @@ namespace IM_Pulse_IV.Models.Main
                 db.SaveChanges();
             }
         }
-        
     }
 }

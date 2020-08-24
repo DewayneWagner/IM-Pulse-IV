@@ -25,93 +25,113 @@
                 <VM:VerifyDataViewModel/>
             </StackLayout.BindingContext>
 
-            <Image Source="{graphics:EmbeddedImage IM-Pulse-IV.Graphics.DrillingRig.png}" Aspect="Fill" Opacity="0.7"/>
             <Label Style="{StaticResource HeaderLabel}"/>
             <BoxView Style="{StaticResource OrangeLine}"/>
 
-            <Grid Style="{StaticResource StandardGrid}" 
-                  WidthRequest="{StaticResource Element_Width}"
-                  HorizontalOptions="CenterAndExpand">
-                
+            <Grid Style="{StaticResource StandardGrid}" Margin="25, 0, 25, 0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Style="{StaticResource GridHeaderLabel}" 
+                <Grid Style="{StaticResource StandardGrid}" 
+                  WidthRequest="{StaticResource Element_Width}"
+                  HorizontalOptions="CenterAndExpand"
+                  Grid.Row="0"
+                  Grid.Column="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Style="{StaticResource GridHeaderLabel}" 
                        Text="Data Read Accuracy:" 
                        BackgroundColor="{StaticResource Orange}"
                        HorizontalTextAlignment="Start" 
                        Padding="10"
                        Grid.Row="0" 
                        Grid.Column="0"/>
-                
-                <Label Style="{StaticResource GridHeaderLabel}" 
+
+                    <Label Style="{StaticResource GridHeaderLabel}" 
                        Text="{Binding ReadDataAccuracy}" 
                        Grid.Row="0"
                        Grid.Column="1"
                        BackgroundColor="{Binding DataAccuracyLabelBackgroundColor}"/>
 
-                <ListView ItemsSource="{Binding DataVerificationOC}" 
+                    <ListView ItemsSource="{Binding DataVerificationOC}" 
                           Grid.Row="1"
                           Grid.Column="0"
                           Grid.ColumnSpan="2"
                           Style="{StaticResource StandardLV}" >
-                    
-                    <ListView.Header>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="{StaticResource Row_Height}"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="{StaticResource Width_Col1}"/>
-                                <ColumnDefinition Width="{StaticResource Width_Col2}"/>
-                                <ColumnDefinition Width="{StaticResource Width_Col3}"/>
-                                <ColumnDefinition Width="{StaticResource Width_Col4}"/>
-                                <ColumnDefinition Width="{StaticResource Width_Col5}"/>
-                            </Grid.ColumnDefinitions>
 
-                            <Label Style="{StaticResource GridHeaderLabel}" Text="Segment" Grid.Row="0" Grid.Column="0"/>
-                            <Label Style="{StaticResource GridHeaderLabel}" Text="Command" Grid.Row="0" Grid.Column="1"/>
-                            <Label Style="{StaticResource GridHeaderLabel}" Text="Read Index" Grid.Row="0" Grid.Column="2"/>
-                            <Label Style="{StaticResource GridHeaderLabel}" Text="Insert Index" Grid.Row="0" Grid.Column="3"/>
-                            <Label Style="{StaticResource GridHeaderLabel}" Text="Is Accurate?" Grid.Row="0" Grid.Column="4"/>
+                        <ListView.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="{StaticResource Row_Height}"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{StaticResource Width_Col1}"/>
+                                    <ColumnDefinition Width="{StaticResource Width_Col2}"/>
+                                    <ColumnDefinition Width="{StaticResource Width_Col3}"/>
+                                    <ColumnDefinition Width="{StaticResource Width_Col4}"/>
+                                    <ColumnDefinition Width="{StaticResource Width_Col5}"/>
+                                </Grid.ColumnDefinitions>
 
-                        </Grid>
-                    </ListView.Header>
-                    
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="{StaticResource Row_Height}"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="{StaticResource Width_Col1}"/>
-                                        <ColumnDefinition Width="{StaticResource Width_Col2}"/>
-                                        <ColumnDefinition Width="{StaticResource Width_Col3}"/>
-                                        <ColumnDefinition Width="{StaticResource Width_Col4}"/>
-                                        <ColumnDefinition Width="{StaticResource Width_Col5}"/>
-                                    </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource GridHeaderLabel}" Text="Segment" Grid.Row="0" Grid.Column="0"/>
+                                <Label Style="{StaticResource GridHeaderLabel}" Text="Command" Grid.Row="0" Grid.Column="1"/>
+                                <Label Style="{StaticResource GridHeaderLabel}" Text="Read Index" Grid.Row="0" Grid.Column="2"/>
+                                <Label Style="{StaticResource GridHeaderLabel}" Text="Insert Index" Grid.Row="0" Grid.Column="3"/>
+                                <Label Style="{StaticResource GridHeaderLabel}" Text="Is Accurate?" Grid.Row="0" Grid.Column="4"/>
 
-                                    <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="0" Text="{Binding SegmentID}"/>
-                                    <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="1" Text="{Binding CommandParameter}"/>
-                                    <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="2" Text="{Binding ReadIndex}"/>
-                                    <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="3" Text="{Binding InsertIndex}"/>
-                                    <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="4" Text="{Binding IsAccurate}"/>
+                            </Grid>
+                        </ListView.Header>
 
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="{StaticResource Row_Height}"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="{StaticResource Width_Col1}"/>
+                                            <ColumnDefinition Width="{StaticResource Width_Col2}"/>
+                                            <ColumnDefinition Width="{StaticResource Width_Col3}"/>
+                                            <ColumnDefinition Width="{StaticResource Width_Col4}"/>
+                                            <ColumnDefinition Width="{StaticResource Width_Col5}"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="0" Text="{Binding SegmentID}"/>
+                                        <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="1" Text="{Binding CommandParameter}"/>
+                                        <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="2" Text="{Binding ReadIndex}"/>
+                                        <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="3" Text="{Binding InsertIndex}"/>
+                                        <Label Style="{StaticResource ParameterLabels}" Grid.Row="0" Grid.Column="4" Text="{Binding IsAccurate}"/>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+
+                <Label Style="{StaticResource GridHeaderLabel}" 
+                       Text="{Binding Instructions}"
+                       HorizontalTextAlignment="Start"
+                       Padding="20"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
             </Grid>
+
+            
         
             <BoxView Style="{StaticResource OrangeLine}"/>
             <Label Style="{StaticResource FooterLabel}"/>

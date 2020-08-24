@@ -22,6 +22,7 @@ namespace IM_Pulse_IV.ViewModels
 
             DataVerificationOC = new DataVerification().GetOCOfAllData();
             ReadDataAccuracy = GetDataAccuracy();
+            Instructions = GetInstructions();
         }
 
         private string _readDataAccuracy;
@@ -58,10 +59,28 @@ namespace IM_Pulse_IV.ViewModels
                 SetValue(ref _dataVerificationOC, value);
             }
         }
+        private string _instructions;
+        public string Instructions
+        {
+            get => _instructions;
+            set
+            {
+                _instructions = value;
+                SetValue(ref _instructions, value);
+            }
+        }
+
         private string GetDataAccuracy()
         {
             double success = DataVerificationOC.Where(d => d.IsAccurate).Count();
             return (success / DataVerificationOC.Count).ToString("p1");
+        }
+        private string GetInstructions()
+        {
+            string message = "This sheet verifies the accuracy of the string reader, by comparing results of where the command paramneters were inserted vs. the index where they were " +
+                "found in the string by the Data Reader / processor.";
+
+            return message;
         }
     }
 }
