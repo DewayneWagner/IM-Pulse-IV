@@ -15,6 +15,7 @@ namespace IM_Pulse_IV.Models.Main
         public int Index { get; set; }
         public int SegmentID { get; set; }
     }
+
     public class ReadDataDBConfig : IEntityTypeConfiguration<ReadData>
     {
         public void Configure(EntityTypeBuilder<ReadData> builder)

@@ -41,7 +41,7 @@ namespace IM_Pulse_IV.Models.Main
             _maxNumberOfSegments = allData.Max(d => d.SegmentID) + 1;
             initDefaultList();
             addDataToList();
-            //checkIfAccurate();
+            checkIfAccurate();
 
             return dvOC;
             
@@ -77,7 +77,7 @@ namespace IM_Pulse_IV.Models.Main
                         .ToList();
 
                     List<DataVerification> thisDVList;
-                    List<RandomDataStats> thisRandomDataStatsList;
+                    List<RandomDataStats> thisRDSList;
 
                     foreach (RandomDataStats data in readList)
                     {
@@ -86,25 +86,53 @@ namespace IM_Pulse_IV.Models.Main
                             for (int com = 0; com < _commandParameterList.Count; com++)
                             {
                                 thisDVList = dvOC.Where(d => d.SegmentID == seg)
-                                            .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
-                                            .ToList();
+                                                .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
+                                                .ToList();
 
-                                thisRandomDataStatsList = allData.Where(d => d.SegmentID == seg)
-                                            .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
-                                            .ToList();
+                                thisRDSList = readList.Where(d => d.SegmentID == seg)
+                                                .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
+                                                .ToList();
 
-                                if (thisDVList != null || thisRandomDataStatsList != null)
+                                int smallestIndex = thisDVList.Count < thisRDSList.Count ? thisDVList.Count : thisRDSList.Count;
+
+                                for (int index = 0; index < smallestIndex; index++)
                                 {
-                                    for (int index = 0; index < thisDVList.Count; index++)
-                                    {
-                                        if(index > thisDVList.Count || index > thisRandomDataStatsList.Count)
-                                        {
-                                            thisDVList[index].ReadIndex = thisRandomDataStatsList[index].Index;
-                                        }
-                                    }
-                                }                                
+                                    thisDVList[index].ReadIndex = thisRDSList[index].Index;
+                                }
                             }
                         }
+
+                        //var thisDV = dvOC.Where(d => d.SegmentID == data.SegmentID)
+                        //                .Where(d => d.CommandParameter == data.CommandParameter)
+                        //                .Where(d => d.InsertIndex == data.Index)
+                        //                .FirstOrDefault();
+
+                        //thisDV.ReadIndex = data.Index;
+
+                        //for (int seg = 0; seg < _maxNumberOfSegments; seg++)
+                        //{
+                        //    for (int com = 0; com < _commandParameterList.Count; com++)
+                        //    {
+                        //        thisDVList = dvOC.Where(d => d.SegmentID == seg)
+                        //                    .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
+                        //                    .ToList();
+
+                        //        thisRandomDataStatsList = allData.Where(d => d.SegmentID == seg)
+                        //                    .Where(d => d.CommandParameter == _commandParameterList[com].CommandName)
+                        //                    .ToList();
+
+                        //        if (thisDVList != null || thisRandomDataStatsList != null)
+                        //        {
+                        //            for (int index = 0; index < thisDVList.Count; index++)
+                        //            {
+                        //                if(index > thisDVList.Count || index > thisRandomDataStatsList.Count)
+                        //                {
+                        //                    thisDVList[index].ReadIndex = thisRandomDataStatsList[index].Index;
+                        //                }
+                        //            }
+                        //        }                                
+                        //    }
+                        //}
                     }
                 }
             }

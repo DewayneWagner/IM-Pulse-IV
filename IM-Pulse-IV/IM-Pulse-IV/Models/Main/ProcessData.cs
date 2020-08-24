@@ -76,13 +76,13 @@ namespace IM_Pulse_IV.Models.Main
                         rd.IsCommand = true;
                     }
 
-                    //_readDataList.Add(new ReadData
-                    //{
-                    //    Data = c[ii],
-                    //    SegmentID = seg,
-                    //    Index = ii,
-                    //    IsCommand = _listOfCommandParameters.Contains(c[ii]) ? true : false,
-                    //});
+                    _readDataList.Add(new ReadData
+                    {
+                        Data = c[ii],
+                        SegmentID = seg,
+                        Index = ii,
+                        IsCommand = _listOfCommandParameters.Contains(c[ii]) ? true : false,
+                    });
                 }
                 void addteststrings()
                 {
