@@ -40,7 +40,6 @@ namespace IM_Pulse_IV.Models.Main
             ObservableCollection<DataVerification> dvOC = new ObservableCollection<DataVerification>();
             _maxNumberOfSegments = allData.Max(d => d.SegmentID) + 1;
             initDefaultList();
-            //addDataToRandomStatsList();
             checkIfAccurate();
 
             return dvOC;
@@ -106,21 +105,6 @@ namespace IM_Pulse_IV.Models.Main
                             }
                         }
                     }
-                }
-            }
-            void addDataToRandomStatsList()
-            {
-                foreach (RandomDataStats data in allData)
-                {
-                    DataVerification dv = dvOC.Where(d => d.CommandParameter == data.CommandParameter)
-                                                .Where(d => d.SegmentID == data.SegmentID)
-                                                .FirstOrDefault();
-
-                    if (dv != null)
-                    {
-                        if (data.IsReadVsInsert) { dv.ReadIndex = data.Index; }
-                        else { dv.InsertIndex = data.Index; }
-                    }                    
                 }
             }
             void checkIfAccurate()

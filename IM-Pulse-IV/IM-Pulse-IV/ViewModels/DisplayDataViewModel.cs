@@ -36,9 +36,9 @@ namespace IM_Pulse_IV.ViewModels
         }
 
         public ICommand MultiParameters { get; set; }
-        private void OnMultiParameters(object obj)
+        private async void OnMultiParameters(object obj)
         {
-            throw new NotImplementedException();
+            await _pageServices.DisplayAlert("This functionality coming soon!", "This hasn't been configured at this point - but when it is done, it will provide more advanced analysis of read data.");
         }
 
         private bool _buttonEnabled;
